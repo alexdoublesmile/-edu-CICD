@@ -10,17 +10,17 @@ script:
   - docker run -e CI=true joyful/react-test npm test
 
 after_success:
-  - docker build -t joyful/multi-client ./client
-  - docker build -t joyful/multi-nginx ./nginx
-  - docker build -t joyful/multi-server ./server
-  - docker build -t joyful/multi-worker ./worker
+  - docker build -t alexdoublesmile/multi-client ./client
+  - docker build -t alexdoublesmile/multi-nginx ./nginx
+  - docker build -t alexdoublesmile/multi-server ./server
+  - docker build -t alexdoublesmile/multi-worker ./worker
 # Log in to the Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to Docker Hub
-  - docker push joyful/multi-client
-  - docker push joyful/multi-nginx
-  - docker push joyful/multi-server
-  - docker push joyful/multi-worker
+  - docker push alexdoublesmile/multi-client
+  - docker push alexdoublesmile/multi-nginx
+  - docker push alexdoublesmile/multi-server
+  - docker push alexdoublesmile/multi-worker
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
